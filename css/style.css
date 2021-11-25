@@ -1,0 +1,240 @@
+/**Custom Properties**/
+:root{ /*Variables que podemos reutilizar*/
+   /*Paleta de Colores*/
+    --primario: #9c27b0;
+    --primarioOscuro: #89119d;
+    --secundario: #ffce00;
+    --secundarioOscuro: rgb(233,287,2);
+    --blanco: #fff;
+    --negro: #000;
+    /*Estilos y Fuentes*/
+    --fuentePrincipal: 'Staatliches', cursive;
+}
+
+html { 
+    box-sizing: border-box; /*aplicar un modelo de diseño de caja natural a todos los elementos, pero permitiendo que los componentes cambien*/
+    font-size: 62.5%; /*Establece por default la pagina para trabajar en rem*/    
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+ /**Globales**/
+body{
+     background-color: var(--primario); /*Para el color de fonde de la pagina*/
+     font-size: 1.6rem; /*Tamaño de la fuente*/
+     line-height: 1.5; /*Interlineado de la fuente*/
+}
+p{
+     font-size: 1.8rem; /*Tamaño de la fuente en los parrafos*/
+     font-family: Arial, Helvetica, sans-serif; /*Establecer la fuente de los parrofos*/
+     color: var(--blanco); /*Color para el texto de los parrofos*/
+}
+a{
+     text-decoration: none; /*Quitar el interlinieado de los hipervinculos*/
+}
+img{
+    width: 100%; /*Se ajusta el ancho de la imagen*/
+}
+.contenedor{
+     max-width: 120rem; /*Se establece como el rango maximo a utilizar*/
+     margin: 0 auto; /*se utuliza para ajustar el margen externamente*/
+ }
+h1, h2, h3{
+    text-align: center; /*Se centra el texto de los headings*/
+    color: var(--secundario); /*Se establece el color de los headings*/
+    font-family: var(--fuentePrincipal); /*Se establece el color de los headings*/
+}
+h1{
+    font-size: 4rem; /*tamaño de fuente para los headings*/
+}
+h2{
+    font-size: 3.2rem; 
+}
+h3{
+    font-size: 2.4rem;
+}
+
+/**Encabezado**/
+.header{
+    display: flex; /*agrega las propiedades de css flex*/
+    justify-content: center; /*centrar horizontalmente "por default (rows)"*/
+}
+.header__logo{
+    margin: 3rem 0; /*margen de 3rem top-botton, 0 de margen izq-der*/
+
+}
+
+/** Pie de pagina **/
+.footer{ /*Bloque footer*/
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0; /*relleno de 1rem arriba-abajo, 0 de relleno de izq-der*/
+    margin-top: 2rem; /*margen hacia arriba 2rem*/
+}
+.footer__texto{ /*Elemento del bloque footer*/
+    text-align: center; /*centrar texto*/
+    font-family: var(--fuentePrincipal); /*Se establece la fuente*/
+    font-size: 2rem; /*tamaño de la fuente*/  
+}
+
+/**Navegación**/
+.navegacion{ /*Bloque navegación*/
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0; /*relleno de 1rem arriba-abajo, 0 de relleno de izq-der*/
+    display: flex; /*agrega las propiedades de css flex*/
+    justify-content: center; /*centramos de forma horizontal*/
+    gap: 2rem; /*brecha de 2rem entre cada elemento*/
+}
+.navegacion__enlace{ /*Elemento del bloque navegacion*/
+    font-family: var(--fuentePrincipal); /*Estilo de fuente al bloque navegación*/
+    color: var(--blanco); /*color de fuente*/
+    font-size: 3rem; /*tamaño de la fuente*/
+}
+.navegacion__enlace--activo, /*modificador del bloque navegación*/
+.navegacion__enlace:hover{  /*hover sirve para marcar cuanndo estas sobre un elemento*/
+    color: var(--secundario);
+}
+
+/**Grid**/
+.grid{
+    display: grid; /*Activamos las propiedades de grid*/
+    grid-template-columns: repeat(2, 1fr); /*fracionasmos en dos columnas*/
+    gap: 2rem; /*gap = (colunm-gap, row-gap) separación de 2rem*/
+}
+@media (min-width: 768px) {  /*Query para que se vea en tres columnas en pantalla completa*/
+    .grid{
+        grid-template-columns: repeat(3, 1fr); /*fraccionamos en tres columnas*/
+    }        
+}
+
+/**Productos**/
+.producto{ /*Bloque Producto*/
+    background-color: var(--primarioOscuro); /*Color de fondo a la etiqueta*/
+    padding: 1rem; /*Relleno de 1rem arriba y abajo*/
+}
+.producto__nombre{ /*Elemento del bloque producto*/
+    font-size: 4rem; /*Tamaño de la fuente*/
+}
+.producto__precio{ /*Elemento del bloque producto*/
+    font-size: 2.8rem; /*Tamaño de la fuente*/
+    color: var(--secundario); /*Color a la fuente*/
+}
+.producto__nombre,
+.producto__precio{ 
+    font-family: var(--fuentePrincipal); /*Establecemos la fuente*/
+    margin: 1rem 0; /*margen de 1rem top-botton, 0 de margen izq-der*/
+    text-align: center; /*centramos el texto*/
+    line-height: 1.2; /*Interlineado de la fuente*/
+}
+
+/** Graficos **/
+.grafico{ /*Bloque Grafico*/
+    min-height: 30rem; /*Establecemos altura minima*/
+    background-repeat: no-repeat; /*No repetimos la imagen*/
+    background-size: cover; /*Cobrimos el tamaño de fondo*/
+    grid-column: 1/3; /*movemos la columna de 1 a la 3*/
+
+}
+.grafico--camisas{ /*Modificador del bloque grafico*/
+    grid-row: 2/3; /*Movemos el row del 2 al 3*/
+    background-image: url(../img/grafico1.jpg); /*agregamos imagen de fondo a la etiqueta* Nota: .. espara salir de la carpeta donde esta ubicada el style.css*/
+}
+.grafico--node{ /*Modificador del bloque grafico*/
+    grid-row: 8/9; /*movemos el row 8 al 9*/
+    background-image: url(../img/grafico2.jpg); /*agregamos imagen de fondo a la etiqueta*/
+}
+@media (min-width: 768px) { /*Query para posicionar la imagen en resolusión completa */
+    .grafico--node{
+        grid-row: 5/6; /*movemos el row 5 al 6*/
+        grid-column: 2/4; /*movemos la column 2 al 4*/
+    }        
+}
+
+/*Nosotros*/
+.nosotros{
+    display: grid; /*Activamos las propiedades de grid*/
+    grid-template-rows: repeat(2, auto); /*fraccionamos en 2 filas*/
+}
+@media (min-width: 768px) { /*Query para establecer 2 columnas en resolusión completa */
+    .nosotros{
+        grid-template-columns: repeat(2, 1fr); /*fraccionamos en 2 columnas*/
+        column-gap: 2rem; /*separación de columnas de 2rem*/
+    } 
+}
+.nosotros__imagen{
+    grid-row: 1/2; /*movemos el row 1 al 2*/  
+}
+@media (min-width: 768px) { /*Query para mover la imagen a la columna izquierda en resolusión completa */
+    .nosotros__imagen{
+        grid-column: 2/3; /*movemos la columna 2 a la 3*/
+    }
+}
+
+/**Bloques**/
+.bloques{
+    display: grid; /*Activamos las propiedades de grid*/
+    grid-template-columns: repeat(2, 1fr); /*fraccioamos en 2 columnas*/
+    gap: 2rem; /*gap = (colunm-gap, row-gap) separación de 2rem*/  
+}
+@media (min-width: 768px) { /*Query para establecer en 4 columnas en resolución completa*/
+    .bloques{
+        grid-template-columns: repeat(4, 1fr); /*fraccionamos en 4 columnas*/       
+    }
+}
+.bloque{
+    text-align: center; /*centramos el contenido*/
+}
+.bloque__titulo{
+    margin: 0; /*quitamos el margen*/
+}
+
+/** Pagina del Producto **/
+@media (min-width: 768px) { /*Query para que se muestre en 2 columnas con resolución completa*/
+    .camisa{
+        display: grid; /*Activamos las propiedades de grid*/
+        grid-template-columns: repeat(2, 1fr); /*fraccionamos en 2 culumnas*/
+        column-gap: 2rem; /*separación de 2rem entre columnas*/
+    }    
+}
+.formulario{
+    display: grid; /*Activamos las propiedades de grid*/
+    grid-template-rows: repeat(3, auto); /*fraccionamos en 3 filas de ajuste automatico*/
+    row-gap: 2rem; /*separación de 2rem entre filas*/
+}
+@media (min-width: 768px ) {/*Query para que el formulario se muestre en 2 columnas en resolución completa*/
+    .formulario,
+    .formulario__submit{       
+        grid-template-columns: repeat(2, 1fr); /*Fracionamos el formulario en 2 columnas*/
+        grid-column: 1/3;  /*hacemos que el boton submit abarque las dos columnas*/
+        gap: 2rem; /*damos un separacion total de 2rem*/
+    }
+}
+
+.formulario__campo{
+    /*
+    border: "equivale a todo esto"
+    1.- border-width: 1rem;
+    2.- border-style: solid;
+    3.- border-color: var(--primarioOscuro);    
+    */
+    border: 1rem solid var(--primarioOscuro); /*Le damos estilo al borde*/
+    background-color: transparent; /*Color de fondo de los campos en transparente*/
+    color: var(--blanco); /*Color a la letra*/
+    font-size: 2rem; /*tamaño de la letra*/
+    font-family: Arial, Helvetica, sans-serif; /*estilo a la letra*/
+    padding: 1rem; /*Relleno de 1rem a los campos*/
+    appearance: none; /*Eliminar la flecha del campo listado */
+}
+.formulario__submit{
+    background-color: var(--secundario); /*Color de fondo al botón*/
+    border: none; /*Quitamos el borde al botón*/
+    font-size: 2rem; /*Tamaño de la letra*/
+    font-family: var(--fuentePrincipal); /*Establecemos la fuente principal*/
+    padding: 2rem; /*Relleno interno del boton a 2rem*/
+    transition: background-color .3s ease; /*Transición de colores de 0.3s*/ /*ease.- especifica un efecto de transición con un inicio lento, luego rápido y, al final lento*/
+    width: auto; /*anchura automatica*/
+}
+.formulario__submit:hover{ /*propiedad para cambio cuando el mouse este sobre el elemento*/
+    cursor: pointer; /*Ponemos puntero cuando el mouse este sobre el botoón*/
+    background-color: var(--secundarioOscuro); /*Color de fondo al botón*/
+}
